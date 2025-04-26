@@ -4,5 +4,524 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLUE HOUSE CONSTRUCTION ET RÉNOVATION</title>
-    ...
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #4285f4;
+            --dark-blue: #0d47a1;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--white);
+            border-radius: 5px;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .logo::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 25px;
+            background-color: var(--primary-color);
+            clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+        }
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-gray);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--primary-color);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <div class="company-name">BLUE HOUSE</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content container">
+            <h1>BLUE HOUSE CONSTRUCTION ET RÉNOVATION</h1>
+            <p>Votre partenaire de confiance pour tous vos projets de construction et rénovation</p>
+            <a href="#contact" class="cta-button">Obtenir un devis gratuit</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">🏗️</div>
+                    <div class="service-content">
+                        <h3>Construction de bâtiments</h3>
+                        <p>Nous construisons des structures résidentielles et commerciales de qualité supérieure, en respectant les délais et les budgets.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">🚿</div>
+                    <div class="service-content">
+                        <h3>Plomberie</h3>
+                        <p>Services complets de plomberie pour installations neuves, réparations et rénovations avec des matériaux de qualité.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">🧱</div>
+                    <div class="service-content">
+                        <h3>Carrelage</h3>
+                        <p>Installation professionnelle de carrelage pour salles de bains, cuisines et autres espaces, avec un large choix de styles.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">🪟</div>
+                    <div class="service-content">
+                        <h3>Fenêtres</h3>
+                        <p>Installation et remplacement de fenêtres efficaces énergétiquement pour améliorer le confort et l'esthétique de votre maison.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">⚡</div>
+                    <div class="service-content">
+                        <h3>Électricité</h3>
+                        <p>Services électriques complets pour nouvelles installations, mises à niveau et réparations, conformes aux normes de sécurité.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">🧰</div>
+                    <div class="service-content">
+                        <h3>Cloisons sèches</h3>
+                        <p>Installation et réparation de cloisons sèches (drywall) pour créer des espaces intérieurs fonctionnels et esthétiques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de nous</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="/api/placeholder/600/400" alt="L'équipe de Blue House Construction" width="100%" height="100%">
+                </div>
+                <div class="about-text">
+                    <h2>Votre partenaire de confiance depuis plus de 15 ans</h2>
+                    <p>Chez BLUE HOUSE CONSTRUCTION ET RÉNOVATION, nous nous engageons à fournir des services de construction et de rénovation de la plus haute qualité. Notre équipe expérimentée travaille avec précision et dévouement pour transformer vos rêves en réalité.</p>
+                    <p>Nous sommes fiers de notre réputation d'excellence et de notre capacité à livrer des projets à temps et dans le respect du budget. Que vous ayez besoin d'une nouvelle construction, d'une rénovation ou de services spécifiques comme la plomberie ou l'électricité, nous sommes là pour vous.</p>
+                    <p>Avec BLUE HOUSE, vous bénéficiez de :</p>
+                    <ul>
+                        <li>Une équipe qualifiée et professionnelle</li>
+                        <li>Des matériaux de qualité supérieure</li>
+                        <li>Un service client exceptionnel</li>
+                        <li>Des garanties solides sur tous nos travaux</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <p><strong>Adresse :</strong> 123 Rue Principale, Ville, Province</p>
+                    <p><strong>Téléphone :</strong> (123) 456-7890</p>
+                    <p><strong>Email :</strong> info@bluehouse.com</p>
+                    <p><strong>Heures d'ouverture :</strong><br>
+                        Lundi - Vendredi: 8h - 17h<br>
+                        Samedi: 9h - 14h<br>
+                        Dimanche: Fermé
+                    </p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service requis</label>
+                            <select id="service" name="service">
+                                <option value="">Sélectionnez un service</option>
+                                <option value="construction">Construction de bâtiments</option>
+                                <option value="plomberie">Plomberie</option>
+                                <option value="carrelage">Carrelage</option>
+                                <option value="fenetres">Fenêtres</option>
+                                <option value="electricite">Électricité</option>
+                                <option value="drywall">Cloisons sèches</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>BLUE HOUSE CONSTRUCTION ET RÉNOVATION</h3>
+                <p>Votre satisfaction est notre priorité</p>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram">i</a>
+                <a href="#" aria-label="Twitter">t</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 BLUE HOUSE CONSTRUCTION ET RÉNOVATION. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
